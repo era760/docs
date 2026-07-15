@@ -2,6 +2,7 @@
 	"name": "bridge-vitepress",
 	"version": "1.0.0",
 	"description": "",
+	"type": "module",
 	"scripts": {
 		"dev": "vitepress dev docs",
 		"build": "vitepress build docs",
@@ -14,6 +15,6 @@
 		"gray-matter": "^4.0.3",
 		"node-fetch": "^2.6.7",
 		"sharp": "^0.30.7",
-		"vitepress": "^1.0.0-alpha.31"
+		"vitepress": "^1.6.4"
 	}
 }

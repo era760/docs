@@ -14,127 +14,161 @@ const ogImage = `https://bridge-core.app${base}social-preview.png`
 const ogTitle = 'bridge.'
 const ogUrl = 'https://bridge-core.app'
 
+const commonThemeConfig = {
+    logo: '/favicon.svg',
+    outline: 'deep' as const,
+    socialLinks: [
+        { icon: 'github' as const, link: 'https://github.com/bridge-core' },
+        {
+            icon: 'twitter' as const,
+            link: 'https://twitter.com/intent/follow?region=follow_link&screen_name=bridgeIde',
+        },
+        { icon: 'discord' as const, link: 'https://discord.gg/uj8K2S9' },
+    ],
+    footer: {
+        message: 'Released under the GPL-3.0 License.',
+        copyright: 'Copyright © 2019-PRESENT solvedDev & bridge. Contributors',
+    },
+    algolia: {
+        apiKey: 'deec154498ea803ab3d8740b6c740234',
+        indexName: 'bridge-core',
+        appId: 'YD57CGJO9K',
+    },
+}
+
 export default defineConfig({
-	title: 'bridge.',
-	description: 'The IDE for Minecraft Add-Ons',
-	lastUpdated: true,
-	ignoreDeadLinks: true,
+    title: 'bridge.',
+    description: 'The IDE for Minecraft Add-Ons',
+    lastUpdated: true,
+    ignoreDeadLinks: true,
 
-	head: [
-		[
-			'link',
-			{ rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` },
-		],
-		['meta', { property: 'og:type', content: 'website' }],
-		['meta', { property: 'og:title', content: ogTitle }],
-		['meta', { property: 'og:image', content: ogImage }],
-		['meta', { property: 'og:url', content: ogUrl }],
-		['meta', { property: 'twitter:description', content: ogDescription }],
-		['meta', { property: 'twitter:title', content: ogTitle }],
-		['meta', { property: 'twitter:card', content: 'summary_large_image' }],
-		['meta', { property: 'twitter:image', content: ogImage }],
-		['meta', { property: 'twitter:url', content: ogUrl }],
-	],
+    head: [
+        [
+            'link',
+            { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` },
+        ],
+        ['meta', { property: 'og:type', content: 'website' }],
+        ['meta', { property: 'og:title', content: ogTitle }],
+        ['meta', { property: 'og:image', content: ogImage }],
+        ['meta', { property: 'og:url', content: ogUrl }],
+        ['meta', { property: 'twitter:description', content: ogDescription }],
+        ['meta', { property: 'twitter:title', content: ogTitle }],
+        ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
+        ['meta', { property: 'twitter:image', content: ogImage }],
+        ['meta', { property: 'twitter:url', content: ogUrl }],
+    ],
 
-	themeConfig: {
-		logo: '/favicon.svg',
-		outline: 'deep',
-		editLink: {
-			text: 'Suggest changes to this page',
-			pattern: 'https://github.com/bridge-core/docs/edit/main/docs/:path',
-		},
-		socialLinks: [
-			{ icon: 'github', link: 'https://github.com/bridge-core' },
-			{
-				icon: 'twitter',
-				link: 'https://twitter.com/intent/follow?region=follow_link&screen_name=bridgeIde',
-			},
-			{ icon: 'discord', link: 'https://discord.gg/uj8K2S9' },
-		],
-		footer: {
-			message: 'Released under the GPL-3.0 License.',
-			copyright:
-				'Copyright © 2019-PRESENT solvedDev & bridge. Contributors',
-		},
-
-		nav: [
-			{ text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
-
-			{
-				text: 'Extensions',
-				link: '/extensions/',
-				activeMatch: '/extensions/',
-			},
-			{ text: 'Creations', link: '/creations/' },
-			{
-				text: 'Resources',
-				items: [
-					{ text: 'Team', link: '/team' },
-					{
-						items: [
-							{
-								text: 'Editor Data ',
-								link: 'https://github.com/bridge-core/editor-packages',
-							},
-							{
-								text: 'Dash ',
-								link: 'https://github.com/bridge-core/dash-compiler',
-							},
-							{
-								text: 'Standalone Dash ',
-								link: 'https://github.com/bridge-core/deno-dash-compiler',
-							},
-							{
-								text: 'Molang ',
-								link: 'https://github.com/bridge-core/molang',
-							},
-							{
-								text: 'Model Viewer ',
-								link: 'https://github.com/bridge-core/model-viewer',
-							},
-						],
-					},
-				],
-			},
-
-			{
-				text: latestBridgeVersion,
-				items: [
-					{
-						text: 'Download',
-						link: '/guide/download/',
-					},
-					{
-						text: 'Release Notes ',
-						link: 'https://github.com/bridge-core/editor/releases',
-					},
-					{
-						text: 'Contributing ',
-						link: 'https://github.com/bridge-core/editor/blob/main/CONTRIBUTING.md',
-					},
-					{
-						items: [
-							{
-								text: 'bridge. Nightly ',
-								link: 'https://nightly.bridge-core.app/',
-							},
-							{
-								text: 'bridge. v1 ',
-								link: 'https://github.com/bridge-core/bridge./',
-							},
-						],
-					},
-				],
-			},
-		],
-		algolia: {
-			apiKey: 'deec154498ea803ab3d8740b6c740234',
-			indexName: 'bridge-core',
-			appId: 'YD57CGJO9K',
-		},
-		sidebar: {
-			'/guide/': generateSidebar('guide'),
-			'/extensions/': generateSidebar('extensions'),
-		},
-	},
+    locales: {
+        root: {
+            label: 'English',
+            lang: 'en',
+            title: 'bridge.',
+            description: 'The IDE for Minecraft Add-Ons',
+            themeConfig: {
+                ...commonThemeConfig,
+                editLink: {
+                    text: 'Suggest changes to this page',
+                    pattern: 'https://github.com/bridge-core/docs/edit/main/docs/:path',
+                },
+                nav: [
+                    { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
+                    {
+                        text: 'Extensions',
+                        link: '/extensions/',
+                        activeMatch: '/extensions/',
+                    },
+                    { text: 'Creations', link: '/creations/' },
+                    {
+                        text: 'Resources',
+                        items: [
+                            { text: 'Team', link: '/team' },
+                            {
+                                items: [
+                                    { text: 'Editor Data ', link: 'https://github.com/bridge-core/editor-packages' },
+                                    { text: 'Dash ', link: 'https://github.com/bridge-core/dash-compiler' },
+                                    { text: 'Standalone Dash ', link: 'https://github.com/bridge-core/deno-dash-compiler' },
+                                    { text: 'Molang ', link: 'https://github.com/bridge-core/molang' },
+                                    { text: 'Model Viewer ', link: 'https://github.com/bridge-core/model-viewer' },
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        text: latestBridgeVersion,
+                        items: [
+                            { text: 'Download', link: '/guide/download/' },
+                            { text: 'Release Notes ', link: 'https://github.com/bridge-core/editor/releases' },
+                            { text: 'Contributing ', link: 'https://github.com/bridge-core/editor/blob/main/CONTRIBUTING.md' },
+                            {
+                                items: [
+                                    { text: 'bridge. Nightly ', link: 'https://nightly.bridge-core.app/' },
+                                    { text: 'bridge. v1 ', link: 'https://github.com/bridge-core/bridge./' },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+                sidebar: {
+                    '/guide/': generateSidebar('guide'),
+                    '/extensions/': generateSidebar('extensions'),
+                },
+            }
+        },
+        ja: {
+            label: '日本語',
+            lang: 'ja',
+            link: '/ja/',
+            title: 'bridge.',
+            description: 'Minecraft アドオン用の開発環境（IDE）',
+            themeConfig: {
+                ...commonThemeConfig,
+                editLink: {
+                    text: 'このページを編集する',
+                    pattern: 'https://github.com/bridge-core/docs/edit/main/docs/:path',
+                },
+                nav: [
+                    { text: 'ガイド', link: '/ja/guide/', activeMatch: '/ja/guide/' },
+                    {
+                        text: '拡張機能',
+                        link: '/ja/extensions/',
+                        activeMatch: '/ja/extensions/',
+                    },
+                    { text: 'クリエイション', link: '/ja/creations/' },
+                    {
+                        text: 'リソース',
+                        items: [
+                            { text: 'チーム', link: '/ja/team' },
+                            {
+                                items: [
+                                    { text: 'エディタデータ ', link: 'https://github.com/bridge-core/editor-packages' },
+                                    { text: 'Dash ', link: 'https://github.com/bridge-core/dash-compiler' },
+                                    { text: 'スタンドアロン Dash ', link: 'https://github.com/bridge-core/deno-dash-compiler' },
+                                    { text: 'Molang ', link: 'https://github.com/bridge-core/molang' },
+                                    { text: 'モデルビューア ', link: 'https://github.com/bridge-core/model-viewer' },
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        text: latestBridgeVersion,
+                        items: [
+                            { text: 'ダウンロード', link: '/ja/guide/download/' },
+                            { text: 'リリースノート ', link: 'https://github.com/bridge-core/editor/releases' },
+                            { text: 'コントリビュート ', link: 'https://github.com/bridge-core/editor/blob/main/CONTRIBUTING.md' },
+                            {
+                                items: [
+                                    { text: 'bridge. Nightly ', link: 'https://nightly.bridge-core.app/' },
+                                    { text: 'bridge. v1 ', link: 'https://github.com/bridge-core/bridge./' },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+                sidebar: {
+                    '/ja/guide/': generateSidebar('ja/guide'),
+                    '/ja/extensions/': generateSidebar('ja/extensions'),
+                },
+            }
+        }
+    }
 })
