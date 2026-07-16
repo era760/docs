@@ -14,7 +14,7 @@ hero:
     actions:
         - theme: brand
           text: ダウンロード
-          link: /guide/download/
+          link: /ja/guide/download/
         - theme: alt
           text: ブラウザで開く
           link: https://editor.bridge-core.app/
